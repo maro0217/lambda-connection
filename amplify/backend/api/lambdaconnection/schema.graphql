@@ -1,0 +1,21 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type Todo @model {
+  id: ID!
+  name: String!
+  description: String
+}
+
+type Query {
+  getAllTodos: [Todo!] @function(name: "getAllTodos-${env}")
+}
+
+
+
+# type Mutation {
+#   addTodo(todo: Todo!): String @function(name: "addTodo-${env}")
+#   # updateTodo(todo: Todo!): String @function(name: "updateTodo-${env}")
+#   # deleteTodo(id: ID): Boolean @function(name: "deleteTodo-${env}")
+# }
