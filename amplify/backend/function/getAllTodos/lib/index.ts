@@ -6,28 +6,39 @@
 	REGION
 Amplify Params - DO NOT EDIT */
 
-import { DynamoDBClient, DynamoDBClientConfig, ListTablesCommand, ListTablesCommandOutput } from '@aws-sdk/client-dynamodb'
+export const handler = async () => {
+  console.log('Hello World');
 
-const config: DynamoDBClientConfig = {
-  endpoint: process.env.API_LAMBDACONNECTION_TODOTABLE_ARN
-
+  return {
+      statusCode: 200,
+      body: JSON.stringify({
+          message: 'Hello World'
+      })
+  };
 }
-const docClient = new DynamoDBClient(config)
+
+// import { DynamoDBClient, DynamoDBClientConfig, ListTablesCommand, ListTablesCommandOutput } from '@aws-sdk/client-dynamodb'
+
+// const config: DynamoDBClientConfig = {
+//   endpoint: process.env.API_LAMBDACONNECTION_TODOTABLE_ARN
+
+// }
+// const docClient = new DynamoDBClient(config)
 
 
-export const handler = async (): Promise<ListTablesCommandOutput | undefined> => {
-  try {
-    const command = new ListTablesCommand({})
-    console.log(command);
-    const client = await docClient.send(command)
-    console.log(client);
-    return client
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const handler = async (): Promise<ListTablesCommandOutput | undefined> => {
+//   try {
+//     const command = new ListTablesCommand({})
+//     console.log(command);
+//     const client = await docClient.send(command)
+//     console.log(client);
+//     return client
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
-handler()
+// handler()
 
 // import { DynamoDBClient, DynamoDBClientConfig, PutItemCommand, ListTablesCommand, ListTablesCommandOutput, PutItemCommandOutput } from '@aws-sdk/client-dynamodb'
 // import { AppSyncResolverHandler } from "aws-lambda";

@@ -17,25 +17,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
-const client_dynamodb_1 = require("@aws-sdk/client-dynamodb");
-const config = {
-    endpoint: process.env.API_LAMBDACONNECTION_TODOTABLE_ARN
-};
-const docClient = new client_dynamodb_1.DynamoDBClient(config);
 const handler = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const command = new client_dynamodb_1.ListTablesCommand({});
-        console.log(command);
-        const client = yield docClient.send(command);
-        console.log(client);
-        return client;
-    }
-    catch (err) {
-        console.log(err);
-    }
+    console.log('Hello World');
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            message: 'Hello World'
+        })
+    };
 });
 exports.handler = handler;
-(0, exports.handler)();
+// import { DynamoDBClient, DynamoDBClientConfig, ListTablesCommand, ListTablesCommandOutput } from '@aws-sdk/client-dynamodb'
+// const config: DynamoDBClientConfig = {
+//   endpoint: process.env.API_LAMBDACONNECTION_TODOTABLE_ARN
+// }
+// const docClient = new DynamoDBClient(config)
+// export const handler = async (): Promise<ListTablesCommandOutput | undefined> => {
+//   try {
+//     const command = new ListTablesCommand({})
+//     console.log(command);
+//     const client = await docClient.send(command)
+//     console.log(client);
+//     return client
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+// handler()
 // import { DynamoDBClient, DynamoDBClientConfig, PutItemCommand, ListTablesCommand, ListTablesCommandOutput, PutItemCommandOutput } from '@aws-sdk/client-dynamodb'
 // import { AppSyncResolverHandler } from "aws-lambda";
 // const config: DynamoDBClientConfig = {
